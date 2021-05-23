@@ -21,46 +21,60 @@ namespace Fractions
 
                 if (rg.IsMatch(fraction))
                 {
-                    
-                    if (fraction.Contains('*')) //      ------------------------------------  $ * $
+                    string[] SplitFraction = fraction.Split(new char[] { '/', ' ' });
+
+                    int number1 = int.Parse(SplitFraction[0]);
+                    int number2 = int.Parse(SplitFraction[1]);
+
+                    string newOperator = SplitFraction[2];
+
+                    int number3 = int.Parse(SplitFraction[3]);
+                    int number4 = int.Parse(SplitFraction[4]);
+
+                    Fraction drop1 = new Fraction(number1, number2);
+                    Fraction drop2 = new Fraction(number3, number4);
+
+
+
+                    if (newOperator == "*") //      ------------------------------------  $ * $
                     {
-                        Console.WriteLine(Split.SplitByMultiplication(fraction));
+                        Console.WriteLine(drop1 * drop2);
                     }
-                    else if (fraction.Contains('+')) // ------------------------------------   $ + $
+                    else if (newOperator == "+") // ------------------------------------   $ + $
                     {
-                        Console.WriteLine(Split.SplitByPlus(fraction));
+                        Console.WriteLine(drop1 + drop2);
                     }
-                    else if (fraction.Contains('-')) // ------------------------------------   $ - $
+                    else if (newOperator == "-") // ------------------------------------   $ - $
                     {
-                        Console.WriteLine(Split.SplitByPlusMinus(fraction));
+                        Console.WriteLine(drop1 - drop2);
                     }
-                    else if (fraction.Contains(" < ")) // ------------------------------------   $ < $
+                    else if (newOperator == " < ") // ------------------------------------   $ < $
                     {
-                        Console.WriteLine(Split.SplitBylessOperation(fraction));
+                        Console.WriteLine(drop1 < drop2);
                     }
-                    else if (fraction.Contains(" > ")) // ------------------------------------   $ > $
+                    else if (newOperator == " > ") // ------------------------------------   $ > $
                     {
-                        Console.WriteLine(Split.SplitByBiggerOperation(fraction));
+                        Console.WriteLine(drop1 > drop2);
                     }
-                    else if (fraction.Contains("==")) // ------------------------------------   $ == $
+                    else if (newOperator == "==") // ------------------------------------   $ == $
                     {
-                        Console.WriteLine(Split.SplitBy__Operation(fraction));
+                        Console.WriteLine(drop1 == drop2);
                     }
-                    else if (fraction.Contains("<=")) // ------------------------------------   $ <= $
+                    else if (newOperator == "<=") // ------------------------------------   $ <= $
                     {
-                        Console.WriteLine(Split.SplitByLessThanOrEqual(fraction));
+                        Console.WriteLine(drop1 <= drop2);
                     }
-                    else if (fraction.Contains(">=")) // ------------------------------------   $ >= $
+                    else if (newOperator == ">=") // ------------------------------------   $ >= $
                     {
-                        Console.WriteLine(Split.SplitByBiggerThanOrEqual(fraction));
+                        Console.WriteLine(drop1 >= drop2);
                     }
-                    else if (fraction.Contains("!=")) // ------------------------------------   $ != $
+                    else if (newOperator == "!=") // ------------------------------------   $ != $
                     {
-                        Console.WriteLine(Split.SplitByNotEqual(fraction));
+                        Console.WriteLine(drop1 != drop2);
                     }
-                    else if (fraction.Contains('/')) // ------------------------------------   $ / $
+                    else if (newOperator == "/") // ------------------------------------   $ / $
                     {
-                        Console.WriteLine(Split.SplitByDivision(fraction));
+                        Console.WriteLine(drop1 / drop2);
                     }
                 }
                 else
