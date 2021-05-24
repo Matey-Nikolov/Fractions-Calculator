@@ -17,25 +17,6 @@ namespace Fractions
             this.Denominator = d;
         }
 
-        /*
-        public static void SplitMultiplication()
-        {
-            string[] fraction = Console.ReadLine()
-                .Split('*');
-
-            int number1 = int.Parse(fraction[0]);
-            int number2 = int.Parse(fraction[1]);
-
-            Fraction drop1 = new Fraction(number1, number2);
-
-            int number3 = int.Parse(fraction[2]);
-            int number4 = int.Parse(fraction[3]);
-
-            Fraction drop2 = new Fraction(number3, number4);
-        }
-        */
-
-
         private static int GCD(int a, int b)
         {
             while (b != 0)
@@ -90,7 +71,7 @@ namespace Fractions
             result.Denominator /= g;
             return result;
         }
-        
+
         public static bool operator <(Fraction fr1, Fraction fr2)
         {
             double a = (double)fr1.Numerator * fr2.Denominator;
@@ -165,6 +146,20 @@ namespace Fractions
 
         public override string ToString()
         {
+            if (this.Denominator == 1)
+            {
+                return this.Numerator.ToString();
+            }
+            return this.Numerator + "/" + this.Denominator;
+        }
+
+        public string NormalToString()
+        {
+            if (Math.Abs(this.Numerator) > this.Denominator)
+            {
+                return this.Numerator / this.Denominator + "[" + Math.Abs(this.Numerator % this.Denominator) + "/" + Math.Abs(this.Denominator) + "]";
+            }
+
             if (this.Denominator == 1)
             {
                 return this.Numerator.ToString();
